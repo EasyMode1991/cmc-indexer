@@ -33,7 +33,7 @@ All of the pages related to each of these coins can be tracked and used for
 analysis.
 
 If you are interested in tracking github statistics then please check
-<a href = "www.google.com">this</a> out
+<a href = "https://github.com/EasyMode1991/github-summariser">this</a> out
 
 If you want to do some sentiment analysis on their social feeds then please have
 a look at <a href="www.google.com">this</a>
