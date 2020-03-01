@@ -2,13 +2,19 @@ import index
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import csv
+import os
 
-def write_coin_to_csv(dict):
-    with open("results.csv", "a") as f:
-        fieldnames = [k for k in dict]
-        writer = csv.DictWriter(f, fieldnames = fieldnames)
-        writer.writerow(dict)
-
+def write_coin_to_csv(d):
+    if "results.csv" not in os.listdir("results"):
+        with open("results/results.csv", "w") as f:
+            fieldnames = [k for k in d]
+            writer = csv.DictWriter(f, fieldnames = fieldnames)
+            writer.writerow(d)
+    else:
+        with open("results/results.csv", "a") as f:
+            fieldnames = [k for k in d]
+            writer = csv.DictWriter(f, fieldnames = fieldnames)
+            writer.writerow(d)
 
 def main():
 
@@ -18,7 +24,6 @@ def main():
     count.add_argument('--new', action= 'store_true', help = 'indexes the newest 100 coins')
     count.add_argument('--top', action = 'store_true' , help = 'indexes the top 100 coins')
     args = parser.parse_args()
-
 
     executor = ThreadPoolExecutor(max_workers = 10)
 
@@ -45,7 +50,6 @@ def main():
             print(e)
             c = index.CryptoCoin(e)
             executor.submit(write_coin_to_csv(c.summarise()))
-
 
 if __name__ == "__main__":
     main()

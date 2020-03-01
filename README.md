@@ -1,4 +1,3 @@
-
 The is a webcrawling task where we want to create an index of links taken from
 www.coinmarketcap.com.
 
@@ -37,3 +36,12 @@ If you are interested in tracking github statistics then please check
 
 If you want to do some sentiment analysis on their social feeds then please have
 a look at <a href="www.google.com">this</a>
+
+To install this tool clone the repository, install docker and run the following command
+
+<code>docker build -t coinindex . </code>
+
+<code>docker run -v `pwd`:/src/results coinindex</code>
+followed by one of the arguments --new(urls for newest 100), --top (urls for top 100), --all (urls for every cryptotoken)
+
+
